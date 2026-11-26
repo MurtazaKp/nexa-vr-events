@@ -84,7 +84,7 @@ test("buildWhatsAppMessage and buildWhatsAppUrl include all selected quote field
   const msg = buildWhatsAppMessage(state);
   assert.ok(msg.includes("Rohan Sharma"));
   assert.ok(msg.includes("Wedding"));
-  assert.ok(msg.includes("Grand Wedding Arena (₹24,999)"));
+  assert.ok(msg.includes("Grand Wedding Arena (₹21,999)"));
   assert.ok(msg.includes("2026-12-20"));
   assert.ok(msg.includes("Lonavala & Aamby Valley Resorts (Della Adventure Resort)"));
   assert.ok(msg.includes("Banquet Hall"));

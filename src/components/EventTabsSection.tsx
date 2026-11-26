@@ -25,7 +25,7 @@ const EVENT_TABS: EventTabDetail[] = [
     id: "Kids' Birthdays (Ages 8–16)",
     quoteEventType: "Birthday Party",
     recommendedTier: "signature",
-    recommendedTierName: "Signature Party Stall (₹13,500)",
+    recommendedTierName: "Signature Party Stall (₹11,999)",
     headline: "Zero Long Queues. Non-Stop High-Energy Birthday Action.",
     summary:
       "Fast 3-minute turns so 30+ kids play without long queues, parent-approved safety boundaries, and a special extended VIP round for the birthday child.",
@@ -45,7 +45,7 @@ const EVENT_TABS: EventTabDetail[] = [
     id: "Weddings",
     quoteEventType: "Wedding",
     recommendedTier: "grand",
-    recommendedTierName: "Grand Wedding Arena (₹24,999)",
+    recommendedTierName: "Grand Wedding Arena (₹21,999)",
     headline: "Interactive VR Cricket & Outfit-Safe Family Fun.",
     summary:
       "Turn your wedding lounge or reception lawn into an interactive crowd zone with outfit-safe games designed for guests in sarees, lehengas, sherwanis, and heels.",

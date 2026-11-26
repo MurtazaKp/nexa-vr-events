@@ -62,7 +62,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onCheckDateClick }) =>
                   href="#packages"
                   className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-900/70 px-6 py-3.5 text-sm sm:text-base font-semibold text-slate-100 hover:border-slate-500 hover:bg-slate-800/80 transition-colors duration-150 whitespace-nowrap shrink-0"
                 >
-                  <span>View Packages (From ₹7,999)</span>
+                  <span>View Packages (From ₹6,999)</span>
                   <ArrowRight className="h-4 w-4 text-amber-400 shrink-0" aria-hidden="true" />
                 </a>
               </div>

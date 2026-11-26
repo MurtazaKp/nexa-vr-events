@@ -37,9 +37,9 @@ const EVENT_TYPE_OPTIONS: QuoteEventType[] = [
 ];
 
 const PACKAGE_TIER_OPTIONS: { id: PackageTierId; label: string }[] = [
-  { id: "starter", label: "₹7,999 Starter" },
-  { id: "signature", label: "₹13,500 Signature" },
-  { id: "grand", label: "₹24,999 Grand Wedding" },
+  { id: "starter", label: "₹6,999 Starter" },
+  { id: "signature", label: "₹11,999 Signature" },
+  { id: "grand", label: "₹21,999 Grand Wedding" },
   { id: "custom", label: "Custom / B2B" },
 ];
 
