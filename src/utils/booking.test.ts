@@ -21,10 +21,10 @@ test("filterExperiences filters VR games accurately by category", () => {
 
   const weddings = filterExperiences(VR_EXPERIENCES, "weddings");
   assert.ok(weddings.some((g) => g.title === "iB Cricket"));
-  assert.ok(weddings.some((g) => g.title === "Richie's Plank Experience"));
+  assert.ok(weddings.some((g) => g.title === "Walk the Plank"));
 
   const kids = filterExperiences(VR_EXPERIENCES, "kids");
-  assert.ok(kids.some((g) => g.title === "Beat Saber"));
+  assert.ok(kids.some((g) => g.title === "Angry Birds VR: Isle of Pigs"));
   assert.ok(kids.some((g) => g.title === "Fruit Ninja VR"));
 });
 
@@ -71,7 +71,7 @@ test("validateQuoteForm requires eventDate and valid guestCountEstimate", () => 
 
 test("buildWhatsAppMessage and buildWhatsAppUrl include all selected quote fields", () => {
   const state: QuoteFormState = {
-    eventType: "Wedding / Sangeet",
+    eventType: "Wedding",
     packageTier: "grand",
     eventDate: "2026-12-20",
     cityArea: "Lonavala & Aamby Valley Resorts",
@@ -83,15 +83,15 @@ test("buildWhatsAppMessage and buildWhatsAppUrl include all selected quote field
 
   const msg = buildWhatsAppMessage(state);
   assert.ok(msg.includes("Rohan Sharma"));
-  assert.ok(msg.includes("Wedding / Sangeet"));
-  assert.ok(msg.includes("Grand Wedding & Sangeet Arena (₹24,999)"));
+  assert.ok(msg.includes("Wedding"));
+  assert.ok(msg.includes("Grand Wedding Arena (₹24,999)"));
   assert.ok(msg.includes("2026-12-20"));
   assert.ok(msg.includes("Lonavala & Aamby Valley Resorts (Della Adventure Resort)"));
   assert.ok(msg.includes("Banquet Hall"));
 
   const url = buildWhatsAppUrl(msg);
   assert.ok(url.startsWith("https://wa.me/919403825153?text="));
-  assert.ok(url.includes(encodeURIComponent("Wedding / Sangeet")));
+  assert.ok(url.includes(encodeURIComponent("Wedding")));
 });
 
 test("packages and experiences omit masks, tournaments, and funfairs and state TV not included (venue TV or laptop stream)", async () => {

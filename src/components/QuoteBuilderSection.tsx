@@ -31,7 +31,7 @@ interface QuoteBuilderSectionProps {
 
 const EVENT_TYPE_OPTIONS: QuoteEventType[] = [
   "Birthday Party",
-  "Wedding / Sangeet",
+  "Wedding",
   "Corporate",
   "Cafe Pop-Up / Venue Partnership",
 ];

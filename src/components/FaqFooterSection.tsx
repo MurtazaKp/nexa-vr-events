@@ -19,7 +19,7 @@ const FAQ_ITEMS: FaqItem[] = [
     id: "faq-sarees-heels",
     question: "Can guests in sarees or heels play?",
     answer:
-      "Absolutely. For Indian weddings and Sangeets, we curate outfit-safe experiences like iB Cricket, Richie's Plank, and seated 360° Roller Coasters that require zero jumping, crouching, or fast spinning. Guests in heavy sarees, lehengas, sherwanis, and heels play comfortably standing in place or seated.",
+      "Absolutely. For Indian weddings, we curate outfit-safe experiences like iB Cricket, Walk the Plank, and Racket Club that require zero jumping, crouching, or fast spinning. Guests in heavy sarees, lehengas, sherwanis, and heels play comfortably standing in place.",
   },
   {
     id: "faq-no-wifi",
@@ -37,7 +37,7 @@ const FAQ_ITEMS: FaqItem[] = [
     id: "faq-booking-advance",
     question: "How far in advance should we book for weekend dates?",
     answer:
-      "Weekend birthday slots and peak wedding/Sangeet dates in Pune, Mumbai, and Lonavala typically book out 10 to 21 days in advance. You can lock your date slot instantly on WhatsApp with a 25% booking advance and pay the balance on event day after setup.",
+      "Weekend birthday slots and peak wedding dates in Pune, Mumbai, and Lonavala typically book out 10 to 21 days in advance. You can lock your date slot instantly on WhatsApp with a 25% booking advance and pay the balance on event day after setup.",
   },
 ];
 
@@ -117,7 +117,7 @@ export const FaqFooterSection: React.FC = () => {
               </span>
               <p className="mt-3 max-w-sm text-sm text-slate-400 leading-relaxed">
                 India&apos;s premier mobile Virtual Reality entertainment arena for
-                birthday parties, luxury weddings, Sangeets, cafe hangouts, and
+                birthday parties, luxury weddings, cafe hangouts, and
                 corporate events.
               </p>
               <div className="mt-4 flex items-center gap-2 text-xs text-slate-300">

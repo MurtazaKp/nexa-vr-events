@@ -1,23 +1,44 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   VR_EXPERIENCES,
+  VRExperience,
   ExperienceFilter,
   filterExperiences,
 } from "../utils/booking";
-import { Gamepad2 } from "lucide-react";
+import { Gamepad2, Play, X } from "lucide-react";
 
 const FILTER_OPTIONS: { id: ExperienceFilter; label: string }[] = [
   { id: "all", label: "All 6 Crowd Favorites" },
   { id: "weddings", label: "Weddings & Adults" },
-  { id: "kids", label: "Kids & Teens (Ages 7–16)" },
-  { id: "thrills", label: "Skyscraper & Coaster Thrills" },
+  { id: "kids", label: "Kids & Teens (Ages 6–16)" },
+  { id: "thrills", label: "Skyscraper & Action Thrills" },
 ];
 
 export const ExperiencesGridSection: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<ExperienceFilter>("all");
-  const [imgErrors, setImgErrors] = useState<Record<string, boolean>>({});
+  const [videoErrors, setVideoErrors] = useState<Record<string, boolean>>({});
+  const [selectedGame, setSelectedGame] = useState<VRExperience | null>(null);
 
   const visibleGames = filterExperiences(VR_EXPERIENCES, activeFilter);
+
+  useEffect(() => {
+    if (!selectedGame) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setSelectedGame(null);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedGame]);
 
   return (
     <section
@@ -78,19 +99,36 @@ export const ExperiencesGridSection: React.FC = () => {
               className="flex flex-col justify-between rounded-2xl border border-slate-800/90 bg-slate-900/35 p-6 hover:border-slate-700 transition-colors duration-150"
             >
               <div>
-                {/* Optional Visual Thumbnail for Spotlight Games or Clean Editorial Header */}
-                {game.imagePath && !imgErrors[game.id] ? (
-                  <div className="mb-5 overflow-hidden rounded-xl border border-slate-800/80 aspect-[16/9] bg-slate-950">
-                    <img
-                      src={game.imagePath}
-                      alt={game.title}
-                      referrerPolicy="no-referrer"
+                {/* Clickable Video Preview */}
+                {game.videoPath && !videoErrors[game.id] ? (
+                  <button
+                    type="button"
+                    onClick={() => setSelectedGame(game)}
+                    aria-label={`Play ${game.title} gameplay video`}
+                    className="group relative mb-5 block w-full overflow-hidden rounded-xl border border-slate-800/80 aspect-[16/9] bg-slate-950 cursor-pointer text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                  >
+                    <video
+                      src={game.videoPath}
+                      muted
+                      loop
+                      playsInline
+                      autoPlay
+                      preload="metadata"
                       onError={() =>
-                        setImgErrors((prev) => ({ ...prev, [game.id]: true }))
+                        setVideoErrors((prev) => ({ ...prev, [game.id]: true }))
                       }
-                      className="h-full w-full object-cover"
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
-                  </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
+                    <span className="absolute inset-0 flex items-center justify-center">
+                      <span className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-950/75 border border-white/20 text-white shadow-lg backdrop-blur-sm transition-transform duration-200 group-hover:scale-110 group-hover:bg-violet-600">
+                        <Play className="h-5 w-5 fill-current ml-0.5" aria-hidden="true" />
+                      </span>
+                    </span>
+                    <span className="absolute bottom-2.5 right-2.5 rounded-md bg-slate-950/80 px-2 py-1 text-[11px] font-medium text-slate-200 backdrop-blur-sm">
+                      Click to watch
+                    </span>
+                  </button>
                 ) : (
                   <div className="mb-5 flex items-center justify-between border-b border-slate-800/80 pb-3">
                     <span className="font-mono-tabular text-xs font-semibold text-cyan-400">
@@ -132,6 +170,74 @@ export const ExperiencesGridSection: React.FC = () => {
           ))}
         </div>
       </div>
+
+      {/* Video Popup Modal */}
+      {selectedGame && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="game-video-modal-title"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/85 backdrop-blur-sm p-4"
+          onClick={() => setSelectedGame(null)}
+        >
+          <div
+            className="relative w-full max-w-3xl rounded-2xl border border-slate-800 bg-slate-900 p-4 sm:p-6 shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setSelectedGame(null)}
+              aria-label="Close video popup"
+              className="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-slate-700 bg-slate-950/90 text-slate-300 hover:bg-slate-800 hover:text-white transition-colors cursor-pointer"
+            >
+              <X className="h-4 w-4" aria-hidden="true" />
+            </button>
+
+            <div className="overflow-hidden rounded-xl border border-slate-800 bg-black">
+              <video
+                key={selectedGame.id}
+                src={selectedGame.videoPath}
+                controls
+                autoPlay
+                playsInline
+                className="w-full aspect-video max-h-[65vh] bg-black"
+              />
+            </div>
+
+            <div className="mt-4">
+              <div className="flex flex-wrap items-center gap-1.5 text-xs font-medium text-amber-400">
+                <span className="font-mono-tabular">{selectedGame.sessionLength}</span>
+                <span aria-hidden="true">·</span>
+                <span>Thrill: {selectedGame.thrillLevel}</span>
+                <span aria-hidden="true">·</span>
+                <span>{selectedGame.ageGroup}</span>
+              </div>
+
+              <h3
+                id="game-video-modal-title"
+                className="mt-1.5 font-display text-xl sm:text-2xl font-bold text-white"
+              >
+                {selectedGame.title}
+              </h3>
+
+              <p className="mt-1 text-xs sm:text-sm font-medium text-cyan-300">
+                {selectedGame.subtitle}
+              </p>
+
+              <p className="mt-3 text-sm text-slate-300 leading-relaxed">
+                {selectedGame.description}
+              </p>
+
+              <div className="mt-4 border-t border-slate-800/80 pt-3 text-xs text-slate-400 flex items-center justify-between gap-2">
+                <span>{selectedGame.crowdFactor}</span>
+                <span className="text-slate-300 font-medium whitespace-nowrap">
+                  {selectedGame.outfitSafe ? "Outfit-Safe" : "Active"}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

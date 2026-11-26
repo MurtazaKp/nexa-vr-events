@@ -129,7 +129,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onCheckDateClick }) =>
                 <div className="flex flex-wrap items-center gap-2 text-xs text-amber-300 font-medium">
                   <span>Venue TV or Laptop Stream</span>
                   <span aria-hidden="true">·</span>
-                  <span>Sangeet VR Cricket</span>
+                  <span>Wedding VR Cricket</span>
                   <span aria-hidden="true">·</span>
                   <span>Kids&apos; VIP Birthday Rounds</span>
                 </div>

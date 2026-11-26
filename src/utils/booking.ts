@@ -2,13 +2,13 @@ export const WHATSAPP_NUMBER = "919403825153";
 
 export type EventCategory =
   | "Kids' Birthdays (Ages 8–16)"
-  | "Weddings & Sangeets"
+  | "Weddings"
   | "Corporate & College Fests"
   | "Cafes & Hangouts";
 
 export type QuoteEventType =
   | "Birthday Party"
-  | "Wedding / Sangeet"
+  | "Wedding"
   | "Corporate"
   | "Cafe Pop-Up / Venue Partnership";
 
@@ -104,7 +104,7 @@ export const PACKAGE_TIERS: PackageTier[] = [
   },
   {
     id: "grand",
-    name: "Grand Wedding & Sangeet Arena",
+    name: "Grand Wedding Arena",
     shortLabel: "₹24,999 Grand Wedding",
     priceInr: "₹24,999",
     numericPrice: 24999,
@@ -115,7 +115,7 @@ export const PACKAGE_TIERS: PackageTier[] = [
     displaySpec: "Venue TV / LED Wall Casting or Laptop Stream (TV Not Included)",
     operators: "2 Dedicated Operators",
     hygieneSpec: "Sanitized Silicone Cushions + Dedicated Wipe Station",
-    highlightFeature: "High-throughput 4-headset zone for large wedding & Sangeet crowds",
+    highlightFeature: "High-throughput 4-headset zone for large wedding crowds",
     features: [
       "4 Hours Full-Scale Celebration VR Arena",
       "4 Wireless Meta Quest VR Headsets",
@@ -160,7 +160,7 @@ export interface VRExperience {
   description: string;
   outfitSafe: boolean;
   crowdFactor: string;
-  imagePath?: string;
+  videoPath: string;
 }
 
 export const VR_EXPERIENCES: VRExperience[] = [
@@ -176,11 +176,11 @@ export const VR_EXPERIENCES: VRExperience[] = [
       "Step into a roaring 60,000-seat stadium and smash sixes with a custom weighted cricket bat controller. Friends and family watch every ball live on your venue TV or our laptop stream.",
     outfitSafe: true,
     crowdFactor: "Spectators cheer every boundary via venue TV or laptop stream",
-    imagePath: "/src/assets/images/vr_cricket_sangeet_1795614654006.jpg",
+    videoPath: "/ib%20cricket.mp4",
   },
   {
-    id: "richies-plank",
-    title: "Richie's Plank Experience",
+    id: "walk-the-plank",
+    title: "Walk the Plank",
     subtitle: "Walk a Skyscraper Plank — Guaranteed Crowd Reactions",
     sessionLength: "3 mins",
     thrillLevel: "Extreme",
@@ -190,34 +190,35 @@ export const VR_EXPERIENCES: VRExperience[] = [
       "Take a virtual elevator 80 stories up and step onto a real physical wooden plank laid on the venue floor. Uncles, cousins, and teens watching the live feed make this the loudest photo-op of the night.",
     outfitSafe: true,
     crowdFactor: "Number-one smartphone video magnet at parties & celebrations",
-    imagePath: "/src/assets/images/vr_plank_experience_1795614653715.jpg",
+    videoPath: "/walk%20the%20plank.mp4",
   },
   {
-    id: "beat-saber",
-    title: "Beat Saber",
-    subtitle: "High-Energy Rhythm Slicing — Great for Kids & Teens",
-    sessionLength: "3 mins (1 Song Track)",
+    id: "angry-birds-vr",
+    title: "Angry Birds VR: Isle of Pigs",
+    subtitle: "3D Slingshot Destruction — Instant Fun for Kids & First-Timers",
+    sessionLength: "3–4 mins",
     thrillLevel: "High",
-    ageGroup: "Ages 8–35",
+    ageGroup: "Ages 6–16 & Families",
     categoryTags: ["all", "kids"],
     description:
-      "Slash glowing rhythm blocks to high-tempo beats using dual light-sabers. Instant pick-up-and-play controls with live gameplay streamed for friends watching next in line.",
+      "Grab a giant virtual slingshot in 3D, aim from any angle around towering pig fortresses, and launch classic birds to topple structures with explosive chain reactions.",
     outfitSafe: true,
-    crowdFactor: "Fast-paced rhythm action for kids and teens",
-    imagePath: "/src/assets/images/vr_rhythm_arcade_1795614659063.jpg",
+    crowdFactor: "Zero motion sickness — easy 30-second slingshot controls",
+    videoPath: "/angry%20birds.mp4",
   },
   {
-    id: "first-encounters",
-    title: "First Encounters (Mixed Reality)",
-    subtitle: "Aliens Burst Through the Real Party Room Walls",
+    id: "racket-club",
+    title: "Racket Club",
+    subtitle: "Fast-Paced VR Pickleball & Box-Tennis Showdowns",
     sessionLength: "3–4 mins",
     thrillLevel: "Moderate",
-    ageGroup: "Ages 7–16 & First-Timers",
+    ageGroup: "Ages 9 to 60+",
     categoryTags: ["all", "kids"],
     description:
-      "Uses full-color passthrough cameras so players still see the real banquet hall or living room while colourful space puffs break through the actual walls and ceiling around them.",
+      "Step onto a compact glass-walled court that blends tennis and pickleball. Rally against friends or AI with crisp physics and zero complex buttons—ideal for weddings, corporate mixers, and teens.",
     outfitSafe: true,
-    crowdFactor: "Zero motion sickness — ideal for first-time VR players",
+    crowdFactor: "Competitive rallies that keep spectators cheering",
+    videoPath: "/racket%20club.mp4",
   },
   {
     id: "fruit-ninja-vr",
@@ -231,19 +232,21 @@ export const VR_EXPERIENCES: VRExperience[] = [
       "Dual-katana fruit slicing in 360 degrees. Requires zero button presses—just swing both hands to slice flying watermelons and combos while dodging bombs.",
     outfitSafe: true,
     crowdFactor: "Instant success for younger birthday guests",
+    videoPath: "/fruit-ninja.mp4",
   },
   {
-    id: "epic-roller-coasters",
-    title: "Epic Roller Coasters",
-    subtitle: "Seated or Standing 360° Thrill Ride for All Ages",
+    id: "thrill-of-the-fight",
+    title: "The Thrill of the Fight",
+    subtitle: "High-Intensity VR Boxing Ring — Pure Adrenaline",
     sessionLength: "3 mins",
-    thrillLevel: "Gentle-to-High",
-    ageGroup: "All Ages (6 to 65+)",
+    thrillLevel: "Extreme",
+    ageGroup: "Ages 10+ & Adults",
     categoryTags: ["all", "thrills", "weddings"],
     description:
-      "Can be played comfortably seated on a chair—making it 100% accessible for elders, guests in heavy wedding sarees or heels, and kids who want a dinosaur-canyon coaster ride.",
+      "Step under the arena lights and trade jabs, hooks, and dodges in a realistic VR boxing ring. Short 3-minute bouts deliver non-stop laughs and high-energy cheering from the crowd.",
     outfitSafe: true,
-    crowdFactor: "Hilarious seated reactions for family members of all ages",
+    crowdFactor: "High-energy boxing bouts that draw a roaring crowd",
+    videoPath: "/thrill-fight.mp4",
   },
 ];
 

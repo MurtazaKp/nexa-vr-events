@@ -42,13 +42,13 @@ const EVENT_TABS: EventTabDetail[] = [
     imagePath: "/src/assets/images/vr_plank_experience_1795614653715.jpg",
   },
   {
-    id: "Weddings & Sangeets",
-    quoteEventType: "Wedding / Sangeet",
+    id: "Weddings",
+    quoteEventType: "Wedding",
     recommendedTier: "grand",
-    recommendedTierName: "Grand Wedding & Sangeet Arena (₹24,999)",
+    recommendedTierName: "Grand Wedding Arena (₹24,999)",
     headline: "Interactive VR Cricket & Outfit-Safe Family Fun.",
     summary:
-      "Turn your Sangeet lounge or Mehendi lawn into an interactive crowd zone with outfit-safe games designed for guests in sarees, lehengas, sherwanis, and heels.",
+      "Turn your wedding lounge or reception lawn into an interactive crowd zone with outfit-safe games designed for guests in sarees, lehengas, sherwanis, and heels.",
     throughputMetric: "60+ Guests/Hour Across 4 Wireless Headsets",
     attireAndSafetyNote:
       "100% Outfit-Safe: No jumping, crouching, or spinning — safe for sarees, lehengas & heels",
@@ -139,7 +139,7 @@ export const EventTabsSection: React.FC<EventTabsSectionProps> = ({
             style={{ textWrap: "balance" }}
           >
             Engineered for Indian Celebrations — From Living Room Birthdays to
-            500-Guest Sangeets.
+            500-Guest Weddings.
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-300">
             Select your event format below to see how we customize game selection,
