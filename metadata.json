@@ -1,0 +1,6 @@
+{
+  "name": "NexaVR Events — Mobile VR Arena for Parties & Weddings",
+  "description": "Mobile Virtual Reality entertainment stall service for birthday parties, weddings, sangeets, cafe hangouts, and corporate events across Pune, Mumbai, and Lonavala.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
